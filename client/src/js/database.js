@@ -7,10 +7,12 @@ const initdb = async () =>
         console.log("jate database already exists");
         return;
       }
-      db.createObjectStore("jate", { keyPath: "id", autoIncrement: false });
+      db.createObjectStore("jate", { keyPath: "id", autoIncrement: true });
       console.log("jate database created");
     },
   });
+
+initdb();
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
@@ -34,8 +36,10 @@ export const getDb = async () => {
   const result = await request;
   console.log("result.value", result);
   console.log('last line');
-  console.log(result[0].content)
-  return result[0].content;
+  if (!result){
+    return null;
+  } else {
+    return result[0].content;
+  }
 };
 
-initdb();
