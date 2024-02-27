@@ -11,8 +11,8 @@ module.exports = () => {
       install: "./src/js/install.js",
     },
     output: {
-      filename: "[name].bundle.js",  // if you have multiple entry point (in this case main and install), 
-      //then you Make sure that each entry point specifies a unique output filename for its assets. 
+      filename: "[name].bundle.js", // if you have multiple entry point (in this case main and install),
+      //then you Make sure that each entry point specifies a unique output filename for its assets.
       //You can use placeholders like [name] or [contenthash] in the output filename to ensure uniqueness.
       path: path.resolve(__dirname, "dist"),
     },
@@ -43,6 +43,11 @@ module.exports = () => {
             src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join("assets", "icons"),
+          },
+          {
+            src: path.resolve("./favicon.ico"),
+            sizes: [96],
+            destination: path.join("./"),
           },
         ],
       }),
