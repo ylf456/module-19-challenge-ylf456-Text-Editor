@@ -1,5 +1,4 @@
 const butInstall = document.getElementById("buttonInstall");
-
 // Logic for installing the PWA
 // browser and service worker will determine if the APP can be install
 // if the app can be installed, it will store an installation function to the window.deferredPrompt
@@ -13,7 +12,6 @@ window.addEventListener("beforeinstallprompt", (event) => {
 // TODO: Implement a click event handler on the `butInstall` element
 butInstall.addEventListener("click", async () => {
   const promptEvent = window.deferredPrompt;  // retrieves the stored prompt event from window.deferredPrompt.
-
  // If there is a prompt event available, 
  // it calls the prompt() method on it to show the installation prompt to the user.
   if (!promptEvent) {  // if there is no promptEvent then return
