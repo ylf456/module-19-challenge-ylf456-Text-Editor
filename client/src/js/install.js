@@ -4,23 +4,26 @@ const butInstall = document.getElementById("buttonInstall");
 // if the app can be installed, it will store an installation function to the window.deferredPrompt
 window.addEventListener("beforeinstallprompt", (event) => {
   console.log('before install')
+  console.log(event)
   // Store the triggered events
-  if(!event){
-    console.log("This app is already installed");
-    butInstall.classList.toggle("hidden", true);
-    return;
-  }
   window.deferredPrompt = event;
   // Remove the hidden class from the button.
   butInstall.classList.toggle("hidden", false);
 });
 
 // TODO: Implement a click event handler on the `butInstall` element
+/*
 if (!window.deferredPrompt) {
   console.log("This App was already Installed");
   butInstall.classList.toggle("hidden", true);
-} else {
-  
+} else {}
+*/
+ // Check if the app is already installed
+if (!window.deferredPrompt && window.matchMedia('(display-mode: standalone)').matches) {
+  console.log("This App is already installed");
+  butInstall.classList.toggle("hidden", true);
+}
+
   butInstall.addEventListener("click", async () => {
     const promptEvent = window.deferredPrompt; // retrieves the stored prompt event from window.deferredPrompt.
     // If there is a prompt event available,
@@ -41,7 +44,7 @@ if (!window.deferredPrompt) {
 
   });
   
-}
+
 
 // TODO: Add an handler for the `appinstalled` event
 window.addEventListener("appinstalled", (event) => {
