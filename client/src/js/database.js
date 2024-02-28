@@ -35,7 +35,7 @@ export const getDb = async () => {
   const request = store.getAll();
   const result = await request;
   console.log("result.value", result);
-  console.log('last line');
+ // console.log('last line');
   if (!result){
     return null;
   } else {
